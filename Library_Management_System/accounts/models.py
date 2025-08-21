@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 class LibraryUser(AbstractUser):
@@ -8,6 +9,12 @@ class LibraryUser(AbstractUser):
     department = models.CharField(max_length=100,blank=True,null=True)
 
 
-    
+class Book(models.Model):
+    pass
+
+
+
+class Issue(models.model):
+    pass
 
 
