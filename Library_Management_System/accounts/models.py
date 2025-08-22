@@ -1,12 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.conf import settings
+from django.contrib.auth.models import User 
 
-
-class User(models.Model):
-    is_student = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    department = models.CharField(max_length=100,blank=True,null=True)
 
 
 class Book(models.Model):
@@ -14,12 +8,11 @@ class Book(models.Model):
         author = models.CharField(max_length=200)
         category = models.CharField(max_length=100)
         isbn = models.CharField(max_length=20, unique=True)
-        satus = models.BooleanField(default=True)
+        status = models.BooleanField(default=True)
 
         def __str__(self):
             return self.title
         
-
 
 
 class Issue(models.Model):
@@ -27,9 +20,10 @@ class Issue(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     issue_date = models.DateField( auto_now_add=True)
     due_date = models.DateField()
-    return_date = models.DateField(null=True, blank=False)
+    return_date = models.DateField(null=True, blank=True)
     fine = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     def __str__(self):
-        return f"{self.user.username} - {self.book.title}"
+        return f"{self.student.username} - {self.book.title}"
+
     

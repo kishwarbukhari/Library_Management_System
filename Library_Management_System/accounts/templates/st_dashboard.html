@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+<h2>Student Dashboard</h2>
+<p>Welcome, {{ request.user.username }} (Student)</p>
+<a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
